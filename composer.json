@@ -9,6 +9,13 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "dev-master#1736dd000849a08b9b1ff64bf4f9eb6532407432"
-    }
+        "zendframework/zendframework": "dev-master#1736dd000849a08b9b1ff64bf4f9eb6532407432",
+        "superdweebie/dojo": "1.8.0"
+    },
+    "repositories": [
+        { 
+            "type": "composer", 
+            "url": "https://raw.github.com/superdweebie/dojo/master" 
+        }
+    ]
 }
