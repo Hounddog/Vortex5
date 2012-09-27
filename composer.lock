@@ -1,6 +1,55 @@
 {
-    "hash": "69edd9935b5849793a75e451ddca8b58",
+    "hash": "d9ff1b7050901cc54843298cccacef82",
     "packages": [
+        {
+            "name": "bjyoungblood/BjyAuthorize",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/bjyoungblood/BjyAuthorize.git",
+                "reference": "b56d13b5e39aa0ae5d3bfe09134aad7a19d2561d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/bjyoungblood/BjyAuthorize/zipball/b56d13b5e39aa0ae5d3bfe09134aad7a19d2561d",
+                "reference": "b56d13b5e39aa0ae5d3bfe09134aad7a19d2561d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zendframework": "2.0.*",
+                "zf-commons/zfc-base": "dev-master",
+                "zf-commons/zfc-user": "dev-master"
+            },
+            "suggest": {
+                "zf-commons/zfc-user-doctrine-orm": "dev-master"
+            },
+            "time": "1348084601",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "BjyAuthorize": "src/"
+                },
+                "classmap": [
+                    "./"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Ben Youngblood",
+                    "email": "bx.youngblood@gmail.com",
+                    "homepage": "http://bjyoungblood.com/"
+                }
+            ],
+            "description": "Easy-use loader and manager for Zend\\Acl with built-in route and dispatch protection",
+            "homepage": "https://github.com/bjyoungblood/BjyAuthorize",
+            "keywords": [
+                "zf2",
+                "acl",
+                "zfc-user"
+            ]
+        },
         {
             "name": "doctrine/common",
             "version": "dev-master",
@@ -977,6 +1026,7 @@
         "rwoverdijk/assetmanager": 20,
         "doctrine/doctrine-orm-module": 20,
         "zf-commons/zfc-user": 20,
-        "zf-commons/zfc-user-doctrine-orm": 20
+        "zf-commons/zfc-user-doctrine-orm": 20,
+        "bjyoungblood/bjyauthorize": 20
     }
 }
