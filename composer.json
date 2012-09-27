@@ -15,7 +15,8 @@
         "rwoverdijk/assetmanager": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master",
         "zf-commons/zfc-user": "dev-master",
-        "zf-commons/zfc-user-doctrine-orm": "dev-master"
+        "zf-commons/zfc-user-doctrine-orm": "dev-master",
+        "bjyoungblood/BjyAuthorize": "dev-master"
     },
     "repositories": [
         { 
