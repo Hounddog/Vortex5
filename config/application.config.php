@@ -1,8 +1,9 @@
 <?php
 return array(
     'modules' => array(
+        'AssetManager',
         'Application',
-	'Kernel',
+	    'Kernel',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
