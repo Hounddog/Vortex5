@@ -8,7 +8,8 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcUser',
-        'ZfcUserDoctrineORM'
+        'ZfcUserDoctrineORM',
+        'ZfcAdmin'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
@@ -17,6 +18,7 @@ return array(
         'module_paths' => array(
             './module',
             './vendor',
+            './module-dev',
         ),
     ),
 );
