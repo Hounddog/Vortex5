@@ -9,31 +9,17 @@
 
 namespace Universe;
 
-use Zend\Mvc\ModuleRouteListener;
+use ZfcBase\Module\AbstractModule;
 
-class Module
+class Module extends AbstractModule
 {
-    public function onBootstrap($e)
+    public function getDir()
     {
-        $e->getApplication()->getServiceManager()->get('translator');
-        $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
+        return __DIR__;
     }
 
-    public function getConfig()
+    public function getNamespace()
     {
-        return include __DIR__ . '/config/module.config.php';
-    }
-
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+        return __NAMESPACE__;
     }
 }
