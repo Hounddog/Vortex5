@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="parsec")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Parsec
+class Parsec implements DarkMatter
 {
     /**
      * The Parsec id
@@ -58,6 +58,20 @@ class Parsec
 	private $coordinates;
 
 	/**
+	 * The size of the parsec in px
+	 * @var int
+	 * @ORM\Column(name="size", type="int")
+	 */
+	private $size;
+
+	/**
+	 * The number of artefacts of the parsec
+	 * @var int
+	 * @ORM\Column(name="nbArtefacts", type="int")
+	 */
+	private $nbArtefacts;
+
+	/**
 	 * Constructor
 	 */
 	public function __constructor(){
@@ -97,6 +111,25 @@ class Parsec
 	    $position = $sector->getSectorPosition($this);
 
 	    return $this->coordinates;
+	}
+
+	/**
+	 * Set the nb of parsecs of the universe
+	 * @param int $nbArtefacts
+	 */
+	public function setNbArtefacts($nbArtefacts)
+	{
+	    $this->nbArtefacts = $nbArtefacts;
+	}
+
+	/**
+	 * Set the size of the universe in px
+	 * @param int $size
+     * @{inheritDoc}
+	 */
+	public function setSize($size)
+	{
+	    $this->size = $size;
 	}
 
 }

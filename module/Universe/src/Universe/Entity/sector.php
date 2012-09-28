@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="sector")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Sector
+class Sector implements DarkMatter
 {
     /**
      * The Sector id
@@ -58,6 +58,20 @@ class Sector
 	private $coordinates;
 
 	/**
+	 * The size of the sector in px
+	 * @var int
+	 * @ORM\Column(name="size", type="int")
+	 */
+	private $size;
+
+	/**
+	 * The number of parsecs of the sector
+	 * @var int
+	 * @ORM\Column(name="nbParsecs", type="int")
+	 */
+	private $nbSectors;
+
+	/**
 	 * Constructor
 	 */
 	public function __constructor(){
@@ -97,6 +111,25 @@ class Sector
 	    $position = $universe->getSectorPosition($this);
 
 	    return $this->coordinates;
+	}
+
+	/**
+	 * Set the nb of sectors of the universe
+	 * @param int $nbParsecs
+	 */
+	public function setNbParsecs($nbParsecs)
+	{
+	    $this->nbParsecs = $nbParsecs;
+	}
+
+	/**
+	 * Set the size of the universe in px
+	 * @param int $size
+     * @{inheritDoc}
+	 */
+	public function setSize($size)
+	{
+	    $this->size = $size;
 	}
 
 }
