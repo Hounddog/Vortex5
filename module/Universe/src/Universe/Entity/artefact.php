@@ -7,6 +7,8 @@
 
 namespace Universe\Entity;
 
+use Universe\Interfaces\DarkMatter;
+use Universe\Interfaces\IsSubSpace;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="parsec")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Artefact implements DarkMatter
+class Artefact implements DarkMatter, IsSubSpace
 {
     /**
      * The Parsec id
@@ -40,6 +42,13 @@ class Artefact implements DarkMatter
 	private $size;
 
 	/**
+	 * The marvellous class to use to render this little piece of universe
+	 * @var int
+	 * @ORM\Column(name="cssClass", type="int")
+	 */
+	private $cssClass;
+
+	/**
 	 * Set the size of the universe in px
 	 * @param int $size
 	 * @{inheritDoc}
@@ -47,6 +56,33 @@ class Artefact implements DarkMatter
 	public function setSize($size)
 	{
 	    $this->size = $size;
+	}
+
+	/**
+	 * Returns the size of the entity
+	 * @{inheritDoc}
+	 */
+	public function getSize()
+	{
+	    return $this->size;
+	}
+
+	/**
+	 * The name of a css class
+	 * @param string $cssClassName
+	 */
+	public function setCssClass($cssClassName)
+	{
+	    $this->cssClass = $cssClassName;
+	}
+
+	/**
+	 * Returns a css class name
+	 * @return string $cssClassName
+	 */
+	public function getCssClass()
+	{
+	     return $this->cssClass;
 	}
 
 }

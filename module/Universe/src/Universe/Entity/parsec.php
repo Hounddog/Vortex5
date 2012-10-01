@@ -7,7 +7,11 @@
 
 namespace Universe\Entity;
 
+use Universe\Interfaces\IsSubSpace;
+use Universe\Interfaces\HasSubSpaces;
+use Universe\Interfaces\DarkMatter;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Will be used to manipulate parsecs
@@ -15,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="parsec")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Parsec implements DarkMatter
+class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace
 {
     /**
      * The Parsec id
@@ -67,15 +71,15 @@ class Parsec implements DarkMatter
 	/**
 	 * The number of artefacts of the parsec
 	 * @var int
-	 * @ORM\Column(name="nbArtefacts", type="int")
+	 * @ORM\Column(name="nbSubSpaces", type="int")
 	 */
-	private $nbArtefacts;
+	private $subSpacesPerRow;
 
 	/**
 	 * Constructor
 	 */
-	public function __constructor(){
-		$this->artefacts = new \Doctrine\Common\Collection\ArrayCollection();
+	public function __construct(){
+		$this->artefacts = new ArrayCollection();
 	}
 
 	/**
@@ -86,11 +90,29 @@ class Parsec implements DarkMatter
 	public function getArtefactById($id)
 	{
 		if (empty($id)) {
-			throw new \Exception(
-				'[\Core\Universe\Parsec](getArtefactById) - Id should be set!'
+			throw new Universe\Exception\DomainException(
+				__METHOD__ . ' - Id should be set!'
 			);
 		}
 		return $this->artefacts->get($id);
+	}
+
+	/**
+	 * Returns a Collection of Artefacts
+	 * @{inheritDoc}
+	 */
+	public function getSubSpaces()
+	{
+	    return $this->artefacts;
+	}
+
+	/**
+	 * Adds an artefact to the sector
+	 * @{inheritDoc}
+	 */
+	public function addSubSpace(IsSubSpace $subspace)
+	{
+	    $this->artefacts->add($subspace);
 	}
 
 	/**
@@ -114,15 +136,24 @@ class Parsec implements DarkMatter
 	}
 
 	/**
-	 * Set the nb of parsecs of the universe
-	 * @param int $nbArtefacts
+	 * Set the nb of artefacts of the parsec
+	 * @{inheritDoc}
 	 */
-	public function setNbArtefacts($nbArtefacts)
+	public function setSubSpacesPerRow($nbPerRow)
 	{
-	    $this->nbArtefacts = $nbArtefacts;
+	    $this->subSpacesPerRow = $nbPerRow;
 	}
 
 	/**
+	 * Returns the nb of artefacts to be displayed per row
+ 	 * @{inheritDoc}
+	 */
+	public function getSubSpacesPerRow()
+	{
+	    return $this->subSpacesPerRow;
+	}
+
+		/**
 	 * Set the size of the universe in px
 	 * @param int $size
      * @{inheritDoc}
@@ -131,5 +162,15 @@ class Parsec implements DarkMatter
 	{
 	    $this->size = $size;
 	}
+
+	/**
+	 * Returns the size of the entity
+	 * @{inheritDoc}
+	 */
+	public function getSize()
+	{
+	    return $this->size;
+	}
+
 
 }

@@ -4,7 +4,7 @@ namespace Kernel\Module;
 
 use ZfcBase\Module\AbstractModule as ZfcBaseAbstractModule;
 
-abbstract class AbstractModule extends ZfcBaseAbstractModule
+abstract class AbstractModule extends ZfcBaseAbstractModule
 {
 	public function getConfig()
 	{
@@ -36,7 +36,9 @@ abbstract class AbstractModule extends ZfcBaseAbstractModule
 		return array(
 			'asset_manager' => array(
 				'resolver_configs' => array(
-					$this->getDir() . '/.public',
+	                'paths' => array(
+					    $this->getDir() . '/./public',
+                    ),
 				),
 			),
 		);

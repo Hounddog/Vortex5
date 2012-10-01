@@ -7,7 +7,11 @@
 
 namespace Universe\Entity;
 
+use Universe\Interfaces\IsSubSpace;
+use Universe\Interfaces\DarkMatter;
+use Universe\Interfaces\HasSubSpaces;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Will be used to manipulate sectors
@@ -15,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="sector")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Sector implements DarkMatter
+class Sector implements DarkMatter, HasSubSpaces, IsSubSpace
 {
     /**
      * The Sector id
@@ -67,15 +71,15 @@ class Sector implements DarkMatter
 	/**
 	 * The number of parsecs of the sector
 	 * @var int
-	 * @ORM\Column(name="nbParsecs", type="int")
+	 * @ORM\Column(name="nbSubSpaces", type="int")
 	 */
-	private $nbSectors;
+	private $subSpacesPerRow;
 
 	/**
 	 * Constructor
 	 */
-	public function __constructor(){
-		$this->parsecs = new \Doctrine\Common\Collection\ArrayCollection();
+	public function __construct(){
+		$this->parsecs = new ArrayCollection();
 	}
 
 	/**
@@ -86,11 +90,29 @@ class Sector implements DarkMatter
 	public function getParsecById($id)
 	{
 		if (empty($id)) {
-			throw new \Exception(
-				'[\Core\Universe\Sector](getParsecById) - Id should be set!'
+			throw new Universe\Exception\DomainException(
+				__METHOD__ . ' - Id should be set!'
 			);
 		}
 		return $this->parsecs->get($id);
+	}
+
+	/**
+	 * Returns a Collection of Parsecs
+	 * @{inheritDoc}
+	 */
+	public function getSubSpaces()
+	{
+	    return $this->parsecs;
+	}
+
+	/**
+	 * Adds a parsec to the sector
+	 * @{inheritDoc}
+	 */
+	public function addSubSpace(IsSubSpace $subspace)
+	{
+	    $this->parsecs->add($subspace);
 	}
 
 	/**
@@ -114,12 +136,21 @@ class Sector implements DarkMatter
 	}
 
 	/**
-	 * Set the nb of sectors of the universe
-	 * @param int $nbParsecs
+	 * Set the nb of sectors of the sector
+	 * @{inheritDoc}
 	 */
-	public function setNbParsecs($nbParsecs)
+	public function setSubSpacesPerRow($nbPerRow)
 	{
-	    $this->nbParsecs = $nbParsecs;
+	    $this->subSpacesPerRow = $nbPerRow;
+	}
+
+	/**
+	 * Returns the nb of parsecs to be displayed per row
+ 	 * @{inheritDoc}
+	 */
+	public function getSubSpacesPerRow()
+	{
+	    return $this->subSpacesPerRow;
 	}
 
 	/**
@@ -130,6 +161,15 @@ class Sector implements DarkMatter
 	public function setSize($size)
 	{
 	    $this->size = $size;
+	}
+
+	/**
+	 * Returns the size of the entity
+	 * @{inheritDoc}
+	 */
+	public function getSize()
+	{
+	    return $this->size;
 	}
 
 }

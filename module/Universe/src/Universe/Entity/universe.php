@@ -8,8 +8,11 @@
 namespace Universe\Entity;
 
 use ZendTest\I18n\Validator\IntTest;
-
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Universe\Interfaces\DarkMatter;
+use Universe\Interfaces\HasSubSpaces;
+use Universe\Interfaces\IsSubSpace;
 
 /**
  * Will be used to manipulate universes, yeah that totally sounds EPIC!
@@ -30,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="universe")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Universe implements DarkMatter
+class Universe implements DarkMatter, HasSubSpaces
 {
     /**
      * The Universe id
@@ -75,15 +78,15 @@ class Universe implements DarkMatter
 	/**
 	 * The number of sectors of the universe
 	 * @var int
-	 * @ORM\Column(name="nbSectors", type="int")
+	 * @ORM\Column(name="nbSubSpaces", type="int")
 	 */
-	private $nbSectors;
+	private $subSpacesPerRow;
 
 	/**
 	 * Constructor
 	 */
-	public function __constructor(){
-		$this->sectors = new \Doctrine\Common\Collection\ArrayCollection();
+	public function __construct(){
+		$this->sectors = new ArrayCollection();
 	}
 
 	/**
@@ -94,29 +97,47 @@ class Universe implements DarkMatter
 	public function getSectorById($id)
 	{
 		if (empty($id)) {
-			throw new \Exception(
-				'[\Core\Universe\Universe](getSectorById) - Id should be set!'
+			throw new Universe\Exception\DomainException(
+				__METHOD__ . ' - Id should be set!'
 			);
 		}
 		return $this->sectors->get($id);
 	}
 
 	/**
-	 * Adds a sector to the universe
-	 * @param Universe\Entity\Sector $sector
+	 * Returns a Collection of Sectors
+	 * @{inheritDoc}
 	 */
-	public function addSector(Universe\Entity\Sector $sector)
+	public function getSubSpaces()
 	{
-	    $this->sectors->add($sector);
+	    return $this->sectors;
+	}
+
+	/**
+	 * Adds a sector to the universe
+	 * @{inheritDoc}
+	 */
+	public function addSubSpace(IsSubSpace $subspace)
+	{
+	    $this->sectors->add($subspace);
 	}
 
 	/**
 	 * Set the nb of sectors of the universe
-	 * @param int $nbSectors
+	 * @{inheritDoc}
 	 */
-	public function setNbSectors($nbSectors)
+	public function setSubSpacesPerRow($nbPerRow)
 	{
-	    $this->nbSectors = $nbSectors;
+	    $this->subSpacesPerRow = $nbPerRow;
+	}
+
+	/**
+	 * Returns the nb of sectors to be displayed per row
+ 	 * @{inheritDoc}
+	 */
+	public function getSubSpacesPerRow()
+	{
+	    return $this->subSpacesPerRow;
 	}
 
 	/**
@@ -127,6 +148,15 @@ class Universe implements DarkMatter
 	public function setSize($size)
 	{
 	    $this->size = $size;
+	}
+
+	/**
+	 * Returns the size of the entity
+	 * @{inheritDoc}
+	 */
+	public function getSize()
+	{
+	    return $this->size;
 	}
 
 }
