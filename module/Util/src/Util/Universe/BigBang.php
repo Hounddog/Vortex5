@@ -60,112 +60,17 @@ class BigBang
 
         $classNames = array(
             'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
-            'bg0',
             'bg1',
             'bg2',
             'bg3',
             'bg4'
         );
+
+        // 80% of void
+        // 10% white
+        // 5 % yellow
+        // 3 % red
+        // 2 % blue
 
         for ($i = 0; $i < $sectorsTotal; $i++) {
             $sector = new Sector();
@@ -180,9 +85,25 @@ class BigBang
                 for ($k = 0; $k < $artefactsTotal; $k++) {
                     $artefact = new Artefact();
                     $artefact->setSize($ArtefactSize);
-                    $artefact->setCssClass(
-                        $classNames[array_rand($classNames)]
-                    );
+                    $rand = rand(0, 100) + 1;
+                    switch (true) {
+                        case ($rand <= 94) :
+                            $index = 0;
+                            break;
+                        case ($rand <= 96) :
+                            $index = 1;
+                            break;
+                        case ($rand <= 98) :
+                            $index = 2;
+                            break;
+                        case ($rand <= 99) :
+                            $index = 3;
+                            break;
+                        case ($rand <= 100) :
+                            $index = 4;
+                            break;
+                    }
+                    $artefact->setCssClass($classNames[$index]);
                     $parsec->addSubSpace($artefact);
                 }
                 $sector->addSubSpace($parsec);
@@ -190,7 +111,8 @@ class BigBang
             $universe->addSubSpace($sector);
         }
 
-        return $this->displayUniverse($universe);
+        return '<div class="map">' . $this->displayUniverse($universe) .
+            '</div>' . $this->displayMenu();
 
     }
 
@@ -211,13 +133,15 @@ class BigBang
     private function displayEntity(DarkMatter $entity)
     {
         $str = '';
+        $class = $this->getClass($entity);
         if ($entity instanceof HasSubSpaces) {
             $size = $entity->getSize();
             $subspaces = $entity->getSubSpaces();
             $nbPerRow = $entity->getSubSpacesPerRow();
 
             $str .= '<td style="width:' . $size . 'px;height:' .
-                $size . 'px;">';
+                $size . 'px;" class="' . $class . '">';
+
             $str .= '<!-- start children of ' . get_class($entity) . ' -->';
             $str .= '<table border="0" cellpadding="0" cellspacing="0" cols="' .
                 $nbPerRow . '" style="width:' . $size . 'px;height:' .
@@ -236,9 +160,36 @@ class BigBang
                 '</td>';
         } else {
             $size = $entity->getSize();
-            $str .= '<td class="' . $entity->getCssClass() . '" style="' .
-                'width:' . $size . 'px;height:' . $size . 'px;"></td>';
+            $str .= '<td class="' . $class . ' ' . $entity->getCssClass() .
+                '" style="width:' . $size . 'px;height:' . $size . 'px;"></td>';
         }
+        return $str;
+    }
+
+    private function getClass(DarkMatter $entity)
+    {
+        $type = get_class($entity);
+        $class = 'universe sector parsec artefact';
+        switch ($type) {
+            case 'Universe\Entity\Universe':
+                $class = 'universe';
+                break;
+            case 'Universe\Entity\Sector':
+                $class = 'universe sector';
+                break;
+            case 'Universe\Entity\Parsec':
+                $class = 'universe sector parsec';
+                break;
+        }
+        return $class;
+    }
+
+    private function displayMenu()
+    {
+        $str = '';
+
+        $str .= '<div class="actionMenu"></div>';
+
         return $str;
     }
 
