@@ -71,14 +71,14 @@ class Universe implements DarkMatter, HasSubSpaces
 	/**
 	 * The size of the universe, in lightyears of course :) px
 	 * @var int
-	 * @ORM\Column(name="size", type="int")
+	 * @ORM\Column(name="size", type="integer")
 	 */
 	private $size;
 
 	/**
 	 * The number of sectors of the universe
 	 * @var int
-	 * @ORM\Column(name="nbSubSpaces", type="int")
+	 * @ORM\Column(name="nbSubSpaces", type="integer")
 	 */
 	private $subSpacesPerRow;
 

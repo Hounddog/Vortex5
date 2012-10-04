@@ -22,4 +22,9 @@ class Module extends AbstractModule
     {
         return __NAMESPACE__;
     }
+
+    public function getDoctrineConfig()
+    {
+        return array();
+    }
 }

@@ -64,14 +64,14 @@ class Sector implements DarkMatter, HasSubSpaces, IsSubSpace
 	/**
 	 * The size of the sector in px
 	 * @var int
-	 * @ORM\Column(name="size", type="int")
+	 * @ORM\Column(name="size", type="integer")
 	 */
 	private $size;
 
 	/**
 	 * The number of parsecs of the sector
 	 * @var int
-	 * @ORM\Column(name="nbSubSpaces", type="int")
+	 * @ORM\Column(name="nbSubSpaces", type="integer")
 	 */
 	private $subSpacesPerRow;
 

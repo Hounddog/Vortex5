@@ -64,14 +64,14 @@ class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace
 	/**
 	 * The size of the parsec in px
 	 * @var int
-	 * @ORM\Column(name="size", type="int")
+	 * @ORM\Column(name="size", type="integer")
 	 */
 	private $size;
 
 	/**
 	 * The number of artefacts of the parsec
 	 * @var int
-	 * @ORM\Column(name="nbSubSpaces", type="int")
+	 * @ORM\Column(name="nbSubSpaces", type="integer")
 	 */
 	private $subSpacesPerRow;
 

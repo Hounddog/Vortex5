@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Will be used to manipulate parsecs
  * @ORM\Entity
- * @ORM\Table(name="parsec")
+ * @ORM\Table(name="artefact")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
 class Artefact implements DarkMatter, IsSubSpace
@@ -37,14 +37,14 @@ class Artefact implements DarkMatter, IsSubSpace
 	/**
 	 * The size of the parsec in px
 	 * @var int
-	 * @ORM\Column(name="size", type="int")
+	 * @ORM\Column(name="size", type="integer")
 	 */
 	private $size;
 
 	/**
 	 * The marvellous class to use to render this little piece of universe
 	 * @var int
-	 * @ORM\Column(name="cssClass", type="int")
+	 * @ORM\Column(name="cssClass", type="integer")
 	 */
 	private $cssClass;
 

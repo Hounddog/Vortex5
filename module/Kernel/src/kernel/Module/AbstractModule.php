@@ -23,9 +23,16 @@ abstract class AbstractModule extends ZfcBaseAbstractModule
 						'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
 						'cache' => 'array',
 						'paths' => array(
-							$this->getDir() . '/src/' . $this->getNamespace() . '/Entity',
+							$this->getDir() . '/src/' .
+				                $this->getNamespace() . '/Entity',
 						),
 					),
+					'orm_default' => array(
+		                'drivers' => array(
+                            $this->getNamespace() . '\Entity' =>
+                                $this->getNamespace() . '_driver'
+                        )
+	                ),
 				),
 			),
 		);
