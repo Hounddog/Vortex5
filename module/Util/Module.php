@@ -9,7 +9,7 @@
 
 namespace Util;
 
-use ZfcBase\Module\AbstractModule;
+use Kernel\Module\AbstractModule;
 
 class Module extends AbstractModule
 {
@@ -21,5 +21,10 @@ class Module extends AbstractModule
     public function getNamespace()
     {
         return __NAMESPACE__;
+    }
+
+    public function getDoctrineConfig()
+    {
+        return array();
     }
 }

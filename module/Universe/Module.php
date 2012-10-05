@@ -9,7 +9,7 @@
 
 namespace Universe;
 
-use ZfcBase\Module\AbstractModule;
+use Kernel\Module\AbstractModule;
 
 class Module extends AbstractModule
 {

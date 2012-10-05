@@ -5,7 +5,7 @@
 * @package Universe
 */
 
-namespace Universe\Entity;
+namespace Universe\Interfaces;
 
 /**
  * Will be used to manipulate common attributes of universe wonders
@@ -13,8 +13,15 @@ namespace Universe\Entity;
 interface DarkMatter
 {
 	/**
-	 * Set the size of the universe in px
+	 * Set the size of the entity in px
 	 * @param int $size
 	 */
 	public function setSize($size);
+
+	/**
+	 * Returns the size of the entity in px
+	 * @return int
+	 */
+	public function getSize();
+
 }
