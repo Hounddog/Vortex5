@@ -10,10 +10,13 @@ return array(
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'ZfcAdmin',
+<<<<<<< HEAD
         'ZfcUserAdmin',
         'RestCrudDoctrineModule',
+=======
         'Util',
         'Universe'
+>>>>>>> f10188143fa7da37cb3a4de79a1a814fe360ede8
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
