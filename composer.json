@@ -14,14 +14,19 @@
         "superdweebie/dojo": "1.8.0",
         "rwoverdijk/assetmanager": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master",
-        "zf-commons/zfc-user": "dev-master",
         "zf-commons/zfc-user-doctrine-orm": "dev-master",
+        "zf-commons/zfc-admin": "dev-master",
+        "zf-commons/zfc-user": "dev-decouple_base_form_from_registration as dev-master",
         "bjyoungblood/BjyAuthorize": "dev-master"
     },
     "repositories": [
         { 
             "type": "composer", 
             "url": "https://raw.github.com/superdweebie/dojo/master" 
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Hounddog/ZfcUser.git"
         }
     ]
 }
