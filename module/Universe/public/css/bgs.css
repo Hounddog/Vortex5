@@ -1,0 +1,58 @@
+.universe,
+.sector,
+.parsec,
+.artefact {
+	outline : none;
+}
+
+.universe.sector:hover {
+	outline : 1px dashed green;
+}
+
+.sector.parsec:hover {
+	outline : 1px dashed orange;
+}
+
+.parsec.artefact:hover {
+	outline : 1px dashed red;
+}
+
+.universe.sector.parsec, 
+.universe.sector.parsec.artefact,
+.sector.parsec.artefact {
+	outline : none;
+}
+
+
+.universe.sector.parsec.artefact.bg0{
+/*	background-image : url('../images/bg0.jpg');*/
+	background-color : #000000;
+}
+
+.universe.sector.parsec.artefact.bg1{
+	background-image : url('../images/bg1.jpg');
+}
+
+.universe.sector.parsec.artefact.bg2{
+	background-image : url('../images/bg2.jpg');
+}
+
+.universe.sector.parsec.artefact.bg3{
+	background-image : url('../images/bg3.jpg');
+}
+
+.universe.sector.parsec.artefact.bg4{
+	background-image : url('../images/bg4.jpg');
+}
+
+.actionMenu {
+	border : 1px solid black;
+	display : inline-block;
+	width : 200px;
+	height: 800px;
+	margin-left: 24px;
+}
+
+.map {
+	display : inline-block;	
+}
