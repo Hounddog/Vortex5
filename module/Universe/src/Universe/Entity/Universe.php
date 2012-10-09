@@ -7,6 +7,7 @@
 
 namespace Universe\Entity;
 
+use Kernel\Interfaces\Entity;
 use ZendTest\I18n\Validator\IntTest;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -33,7 +34,7 @@ use Universe\Interfaces\IsSubSpace;
  * @ORM\Table(name="universe")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Universe implements DarkMatter, HasSubSpaces
+class Universe implements DarkMatter, HasSubSpaces, Entity
 {
     /**
      * The Universe id
@@ -102,6 +103,24 @@ class Universe implements DarkMatter, HasSubSpaces
 			);
 		}
 		return $this->sectors->get($id);
+	}
+
+	/**
+	 * Get the id of the Entity
+	 * @return int
+	 */
+	public function getId()
+	{
+	    return $this->id;
+	}
+
+	/**
+	 * Set the id of the Entity
+	 * @param int $id
+	 */
+	public function setId($id)
+	{
+	    $this->id = $id;
 	}
 
 	/**

@@ -7,6 +7,7 @@
 
 namespace Universe\Entity;
 
+use Kernel\Interfaces\Entity;
 use Universe\Interfaces\DarkMatter;
 use Universe\Interfaces\IsSubSpace;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="artefact")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Artefact implements DarkMatter, IsSubSpace
+class Artefact implements DarkMatter, IsSubSpace, Entity
 {
     /**
      * The Parsec id
@@ -47,6 +48,24 @@ class Artefact implements DarkMatter, IsSubSpace
 	 * @ORM\Column(name="cssClass", type="integer")
 	 */
 	private $cssClass;
+
+	/**
+	 * Get the id of the Entity
+	 * @return int
+	 */
+	public function getId()
+	{
+	    return $this->id;
+	}
+
+	/**
+	 * Set the id of the Entity
+	 * @param int $id
+	 */
+	public function setId($id)
+	{
+	    $this->id = $id;
+	}
 
 	/**
 	 * Set the size of the universe in px

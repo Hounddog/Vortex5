@@ -18,9 +18,10 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $bigBang = new BigBang();
+
+//        $this->getServiceUniverse()->save($bigBang->getUniverse());
+
         $output = $bigBang->createUniverse();
-//        $view = new ViewModel(array('table' => $output));
-//        return $view;
         return array('table' => $output);
     }
 }

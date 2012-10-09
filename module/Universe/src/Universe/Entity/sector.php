@@ -7,6 +7,7 @@
 
 namespace Universe\Entity;
 
+use Kernel\Interfaces\Entity;
 use Universe\Interfaces\IsSubSpace;
 use Universe\Interfaces\DarkMatter;
 use Universe\Interfaces\HasSubSpaces;
@@ -19,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="sector")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Sector implements DarkMatter, HasSubSpaces, IsSubSpace
+class Sector implements DarkMatter, HasSubSpaces, IsSubSpace, Entity
 {
     /**
      * The Sector id
@@ -80,6 +81,24 @@ class Sector implements DarkMatter, HasSubSpaces, IsSubSpace
 	 */
 	public function __construct(){
 		$this->parsecs = new ArrayCollection();
+	}
+
+	/**
+	 * Get the id of the Entity
+	 * @return int
+	 */
+	public function getId()
+	{
+	    return $this->id;
+	}
+
+	/**
+	 * Set the id of the Entity
+	 * @param int $id
+	 */
+	public function setId($id)
+	{
+	    $this->id = $id;
 	}
 
 	/**
