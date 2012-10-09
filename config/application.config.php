@@ -9,7 +9,9 @@ return array(
         'DoctrineORMModule',
         'ZfcUser',
         'ZfcUserDoctrineORM',
-        'ZfcAdmin'
+        'ZfcAdmin',
+        'ZfcUserAdmin',
+        'RestCrudDoctrineModule',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
