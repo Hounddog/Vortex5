@@ -4,6 +4,15 @@ return array(
         'invokables' => array(
             'ZendSkeletonModule\Controller\Skeleton' => 'ZendSkeletonModule\Controller\SkeletonController',
         ),
+        'factories' => array(
+            'ZendSkeletonModule\Controller\Rest' => function($sm) {
+                $controller = new ZendSkeletonModule\Controller\RestController(
+                    $sm->getServiceLocator()->get('rest_crud_base_mapper'),
+                    $sm->getServiceLocator()->get('rest_crud_base_service')
+                );
+                return $controller;
+            }
+        ),
     ),
     'router' => array(
         'routes' => array(
@@ -29,12 +38,13 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/rest[/:id]',
                             'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
+                                'controller' => 'ZendSkeletonModule\Controller\Rest',
+                                'action' => null
                             ),
                         ),
                     ),

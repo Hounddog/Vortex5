@@ -13,7 +13,9 @@ return array(
         'ZfcUserAdmin',
         'RestCrudDoctrineModule',
         'Util',
-        'Universe'
+        'Universe',
+        'ZendSkeletonModule',
+        'DoctrineDataFixtureModule'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

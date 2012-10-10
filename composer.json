@@ -17,7 +17,8 @@
         "zf-commons/zfc-user-doctrine-orm": "dev-master",
         "zf-commons/zfc-admin": "dev-master",
         "zf-commons/zfc-user": "dev-decouple_base_form_from_registration as dev-master",
-        "bjyoungblood/BjyAuthorize": "dev-master"
+        "bjyoungblood/BjyAuthorize": "dev-master",
+        "hounddog/doctrine-data-fixture-module": "dev-master"
     },
     "repositories": [
         { 
