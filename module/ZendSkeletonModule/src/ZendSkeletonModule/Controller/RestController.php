@@ -7,19 +7,11 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace ZendSkeletonModule;
+namespace ZendSkeletonModule\Controller;
 
-use RestCrudDoctrineModule\Module\AbstractModule;
+use RestCrudDoctrineModule\Controller\AbstractRestfulController;
 
-class Module extends AbstractModule
+class RestController extends AbstractRestfulController
 {
-    public function getDir() 
-    {
-        return __DIR__;
-    }
-
-    public function getNamespace()
-    {
-        return __NAMESPACE__;
-    }
+    // http://vortex5.local/test/rest
 }
