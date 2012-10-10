@@ -21,7 +21,9 @@ class IndexController extends AbstractActionController
 
 //        $this->getServiceUniverse()->save($bigBang->getUniverse());
 
-        $output = $bigBang->createUniverse();
-        return array('table' => $output);
+        $universe = $bigBang->createUniverse();
+
+
+//        return array('table' => $output);
     }
 }
