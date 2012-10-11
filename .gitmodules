@@ -7,3 +7,6 @@
 [submodule "module-dev/ZfcUserAdmin"]
 	path = module-dev/ZfcUserAdmin
 	url = https://github.com/Hounddog/ZfcUserAdmin.git
+[submodule "module-dev/ZfcCrudDoctrine"]
+	path = module-dev/ZfcCrudDoctrine
+	url = https://github.com/Hounddog/ZfcCrudDoctrine.git
