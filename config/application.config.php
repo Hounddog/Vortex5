@@ -12,6 +12,7 @@ return array(
         'ZfcAdmin',
         'ZfcUserAdmin',
         'RestCrudDoctrineModule',
+        'ZfcCrud',
         'Util',
         'Universe',
         'ZendSkeletonModule',
