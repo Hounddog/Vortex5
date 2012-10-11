@@ -49,7 +49,9 @@ class Universe implements DarkMatter, HasSubSpaces, Entity
 	 * @var \Doctrine\Common\Collections\ArrayCollection
      * 		Array Universe\Entity\Sector[]
      * @ORM\ManyToMany(
-     * 		targetEntity="Universe\Entity\Sector", indexBy="id"
+     * 		   targetEntity="Universe\Entity\Sector",
+     *         indexBy="id",
+     *         cascade={"persist"}
      * )
      * @ORM\JoinTable(name="universe_sector",
      *      joinColumns={

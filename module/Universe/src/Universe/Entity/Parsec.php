@@ -35,7 +35,9 @@ class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace, Entity
      * @var \Doctrine\Common\Collections\ArrayCollection
      * 		Array Universe\Entity\Artefact[]
      * @ORM\ManyToMany(
-     * 		targetEntity="Universe\Entity\Artefact", indexBy="id"
+     *        targetEntity="Universe\Entity\Artefact",
+     *        indexBy="id",
+     *        cascade={"persist"}
      * )
      * @ORM\JoinTable(name="parsec_artefact",
      *      joinColumns={

@@ -35,7 +35,9 @@ class Sector implements DarkMatter, HasSubSpaces, IsSubSpace, Entity
      * @var \Doctrine\Common\Collections\ArrayCollection
      * 		Array Universe\Entity\Parsec[]
      * @ORM\ManyToMany(
-     * 		targetEntity="Universe\Entity\Parsec", indexBy="id"
+     *        targetEntity="Universe\Entity\Parsec",
+     *        indexBy="id",
+     *        cascade={"persist"}
      * )
      * @ORM\JoinTable(name="sector_parsec",
      *      joinColumns={

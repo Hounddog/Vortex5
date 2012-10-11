@@ -44,8 +44,8 @@ class Artefact implements DarkMatter, IsSubSpace, Entity
 
 	/**
 	 * The marvellous class to use to render this little piece of universe
-	 * @var int
-	 * @ORM\Column(name="cssClass", type="integer")
+	 * @var string
+	 * @ORM\Column(name="cssClass", type="string")
 	 */
 	private $cssClass;
 
