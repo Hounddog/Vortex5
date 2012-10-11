@@ -15,12 +15,21 @@ use Util\Universe\BigBang;
 
 class IndexController extends AbstractActionController
 {
+    private $service;
+    private $mapper;
+
+    public function __construct($mapper, $service)
+    {
+        $this->mapper = $mapper;
+        $this->service = $service;
+    }
+
     public function indexAction()
     {
         $bigBang = new BigBang();
-        $output = $bigBang->createUniverse();
-//        $view = new ViewModel(array('table' => $output));
-//        return $view;
-        return array('table' => $output);
+        $universe = $bigBang->createUniverse();
+        $this->mapper->insert($universe);
+//        $this->getServiceUniverse()->save($bigBang->getUniverse());
+        return array('table' => 'done!');
     }
 }

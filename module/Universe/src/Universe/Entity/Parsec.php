@@ -7,6 +7,7 @@
 
 namespace Universe\Entity;
 
+use Kernel\Interfaces\Entity;
 use Universe\Interfaces\IsSubSpace;
 use Universe\Interfaces\HasSubSpaces;
 use Universe\Interfaces\DarkMatter;
@@ -19,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="parsec")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace
+class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace, Entity
 {
     /**
      * The Parsec id
@@ -34,7 +35,9 @@ class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace
      * @var \Doctrine\Common\Collections\ArrayCollection
      * 		Array Universe\Entity\Artefact[]
      * @ORM\ManyToMany(
-     * 		targetEntity="Universe\Entity\Artefact", indexBy="id"
+     *        targetEntity="Universe\Entity\Artefact",
+     *        indexBy="id",
+     *        cascade={"persist"}
      * )
      * @ORM\JoinTable(name="parsec_artefact",
      *      joinColumns={
@@ -80,6 +83,24 @@ class Parsec implements DarkMatter, HasSubSpaces, IsSubSpace
 	 */
 	public function __construct(){
 		$this->artefacts = new ArrayCollection();
+	}
+
+	/**
+	 * Get the id of the Entity
+	 * @return int
+	 */
+	public function getId()
+	{
+	    return $this->id;
+	}
+
+	/**
+	 * Set the id of the Entity
+	 * @param int $id
+	 */
+	public function setId($id)
+	{
+	    $this->id = $id;
 	}
 
 	/**
