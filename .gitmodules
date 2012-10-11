@@ -1,9 +1,9 @@
 [submodule "module-dev/ZfcCrud"]
 	path = module-dev/ZfcCrud
-	url = git@github.com:Hounddog/ZfcCrud.git
+	url = https://github.com/Hounddog/ZfcCrud.git
 [submodule "module-dev/RestCrudDoctrineModule"]
 	path = module-dev/RestCrudDoctrineModule
-	url = git@github.com:Hounddog/RestCrudDoctrineModule.git
+	url = https://github.com/Hounddog/RestCrudDoctrineModule.git
 [submodule "module-dev/ZfcUserAdmin"]
 	path = module-dev/ZfcUserAdmin
-	url = git@github.com:Hounddog/ZfcUserAdmin.git
+	url = https://github.com/Hounddog/ZfcUserAdmin.git
