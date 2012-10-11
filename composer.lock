@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/bjyoungblood/BjyAuthorize.git",
-                "reference": "91fe03ec3f047145e9ee975fe25b16e49947e468"
+                "reference": "372e72fa729bb07457fc531a0fd4ee2d16c3e59e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/bjyoungblood/BjyAuthorize/zipball/91fe03ec3f047145e9ee975fe25b16e49947e468",
-                "reference": "91fe03ec3f047145e9ee975fe25b16e49947e468",
+                "url": "https://github.com/bjyoungblood/BjyAuthorize/zipball/372e72fa729bb07457fc531a0fd4ee2d16c3e59e",
+                "reference": "372e72fa729bb07457fc531a0fd4ee2d16c3e59e",
                 "shasum": ""
             },
             "require": {
@@ -24,7 +24,7 @@
             "suggest": {
                 "zf-commons/zfc-user-doctrine-orm": "dev-master"
             },
-            "time": "1348850741",
+            "time": "1349894811",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -67,7 +67,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "1349626836",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -117,7 +116,8 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ]
+            ],
+            "time": "1349626836"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -229,12 +229,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/DoctrineModule.git",
-                "reference": "739709962eb72b1b1b7104d2e49cf6d37b2b4966"
+                "reference": "1995dd5b07b7b69228dc5268c85687854961bb2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/DoctrineModule/zipball/739709962eb72b1b1b7104d2e49cf6d37b2b4966",
-                "reference": "739709962eb72b1b1b7104d2e49cf6d37b2b4966",
+                "url": "https://github.com/doctrine/DoctrineModule/zipball/1995dd5b07b7b69228dc5268c85687854961bb2c",
+                "reference": "1995dd5b07b7b69228dc5268c85687854961bb2c",
                 "shasum": ""
             },
             "require": {
@@ -244,7 +244,7 @@
                 "doctrine/common": ">=2.3-dev,<2.5-dev",
                 "zendframework/zendframework": "2.*"
             },
-            "time": "1349810260",
+            "time": "1349897407",
             "bin": [
                 "bin/doctrine-module"
             ],
@@ -531,12 +531,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Hounddog/DoctrineDataFixtureModule",
-                "reference": "86313e7256643b856fa21070de2f55fa2630202c"
+                "reference": "df09e679f93cb5b625e47ebb1a6976ca17d1dc0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Hounddog/DoctrineDataFixtureModule/zipball/86313e7256643b856fa21070de2f55fa2630202c",
-                "reference": "86313e7256643b856fa21070de2f55fa2630202c",
+                "url": "https://github.com/Hounddog/DoctrineDataFixtureModule/zipball/df09e679f93cb5b625e47ebb1a6976ca17d1dc0b",
+                "reference": "df09e679f93cb5b625e47ebb1a6976ca17d1dc0b",
                 "shasum": ""
             },
             "require": {
@@ -544,7 +544,7 @@
                 "doctrine/doctrine-orm-module": "dev-master",
                 "zendframework/zendframework": "2.*"
             },
-            "time": "1349798428",
+            "time": "1349948281",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -828,8 +828,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/zendframework/zf2/zipball/23d96ebd33cae361749ef8d1b7351547bb866d5e",
-                "reference": "23d96ebd33cae361749ef8d1b7351547bb866d5e",
+                "url": "https://github.com/zendframework/zf2/zipball/0289b27c2071a5381cfde52f0e7c32a8c4e2a59f",
+                "reference": "0289b27c2071a5381cfde52f0e7c32a8c4e2a59f",
                 "shasum": ""
             },
             "require": {
@@ -992,7 +992,6 @@
                 "php": ">=5.3.3",
                 "zendframework/zendframework": "2.*"
             },
-            "time": "1347633346",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1019,7 +1018,8 @@
             "homepage": "https://github.com/ZF-Commons/ZfcBase",
             "keywords": [
                 "zf2"
-            ]
+            ],
+            "time": "1347633346"
         },
         {
             "name": "zf-commons/zfc-user",
