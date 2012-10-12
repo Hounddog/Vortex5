@@ -7,22 +7,23 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Util\Controller;
+namespace Universe\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Util\Universe\BigBang;
 
-class IndexController extends AbstractActionController
+class Index extends AbstractActionController
 {
 
     public function indexAction()
     {
-
+/*
         return array(
             'table' => '<div class="map">' .
             $this->displayUniverse($universe) . '</div>' . $this->displayMenu()
         );
+
+        */
     }
 
     private function displayUniverse(Universe $universe)
