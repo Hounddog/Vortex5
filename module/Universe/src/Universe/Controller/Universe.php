@@ -17,13 +17,10 @@ class Universe extends AbstractActionController
 
     public function indexAction()
     {
-/*
-        return array(
+        /*return array(
             'table' => '<div class="map">' .
             $this->displayUniverse($universe) . '</div>' . $this->displayMenu()
-        );
-
-        */
+        );*/
     }
 
     private function displayUniverse(Universe $universe)

@@ -2,9 +2,9 @@
 
 namespace Kernel\Module;
 
-use ZfcBase\Module\AbstractModule as ZfcBaseAbstractModule;
+use ZfcCrudJsonRest\Module\AbstractModule as ZfcCrudAbstractModule;
 
-abstract class AbstractModule extends ZfcBaseAbstractModule
+abstract class AbstractModule extends ZfcCrudAbstractModule
 {
 	public function getConfig()
 	{
