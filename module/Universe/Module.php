@@ -10,6 +10,11 @@
 namespace Universe;
 
 use Kernel\Module\AbstractModule;
+use Zend\ModuleManager\Feature;
+use Zend\Loader;
+use Zend\EventManager\EventInterface;
+use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Router\RouteMatch;
 
 class Module extends AbstractModule
 {
@@ -21,5 +26,10 @@ class Module extends AbstractModule
     public function getNamespace()
     {
         return __NAMESPACE__;
+    }
+
+    public function getDoctrineConfig()
+    {
+        return array();
     }
 }

@@ -1,15 +1,12 @@
 <?php
 return array(
+/*
     'service_manager' => array(
         'factories' => array(
             'universe_mapper' => function($sm) {
                 $mapper = $sm->get('crud_db_mapper');
                 $mapper->setEntityClassName('Universe\Entity\Universe');
                 return $mapper;
-                /*return new RestCrudDoctrineModule\Mapper\BaseMapper(
-                    $sm->get('doctrine.entitymanager.orm_default'),
-                    'Universe\Entity\Universe'
-                );*/
             },
             'rest_crud_universe_service' => function($sm) {
                 return new ZfcCrudJsonRest\Service\Restful(
@@ -18,6 +15,7 @@ return array(
             },
         ),
     ),
+*/
     'router' => array(
         'routes' => array(
             'util' => array(
