@@ -15,12 +15,29 @@ use Zend\View\Model\ViewModel;
 class Universe extends AbstractActionController
 {
 
+    /**
+     * The Doctrine Mapper
+     * @var Mapper\DoctrineDb
+     */
+    protected $mapper;
+
+    protected $service;
+
+    public function __construct(\ZfcCrud\Mapper\DbMapperInterface $mapper, $service)
+    {
+        $this->mapper = $mapper;
+        $this->service = $service;
+    }
+
     public function indexAction()
     {
-        /*return array(
+
+        $universe = $this->mapper->findById(0);
+
+        return array(
             'table' => '<div class="map">' .
             $this->displayUniverse($universe) . '</div>' . $this->displayMenu()
-        );*/
+        );
     }
 
     private function displayUniverse(Universe $universe)

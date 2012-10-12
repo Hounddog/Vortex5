@@ -28,12 +28,7 @@ class Module extends AbstractModule
         return __NAMESPACE__;
     }
 
-    public function getDoctrineConfig()
-    {
-        return array();
-    }
-
-    public function getServiceConfig() 
+    public function getServiceConfig()
     {
         return array(
             'factories' => array(
@@ -43,7 +38,7 @@ class Module extends AbstractModule
                     return $mapper;
                 },
                 'rest_crud_universe_service' => function($sm) {
-                    return new ZfcCrudJsonRest\Service\Restful(
+                    return new \ZfcCrudJsonRest\Service\Restful(
                         $sm->get('universe_mapper')
                     );
                 },
@@ -51,7 +46,7 @@ class Module extends AbstractModule
         );
     }
 
-    public function getControllerConfig() 
+    public function getControllerConfig()
     {
         return array (
             'factories' => array(
