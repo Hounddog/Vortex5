@@ -2,15 +2,18 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'rest_crud_universe_mapper' => function($sm) {
-                return new RestCrudDoctrineModule\Mapper\BaseMapper(
+            'universe_mapper' => function($sm) {
+                $mapper = $sm->get('crud_db_mapper');
+                $mapper->setEntityClassName('Universe\Entity\Universe');
+                return $mapper;
+                /*return new RestCrudDoctrineModule\Mapper\BaseMapper(
                     $sm->get('doctrine.entitymanager.orm_default'),
                     'Universe\Entity\Universe'
-                );
+                );*/
             },
             'rest_crud_universe_service' => function($sm) {
-                return new RestCrudDoctrineModule\Service\BaseRestService(
-                    $sm->get('rest_crud_universe_mapper')
+                return new ZfcCrudJsonRest\Service\Restful(
+                    $sm->get('universe_mapper')
                 );
             },
         ),
@@ -29,7 +32,7 @@ return array(
                 'options' => array(
                     'route'    => '/universe',
                     'defaults' => array(
-                        'controller' => 'Universe\Controller\Index',
+                        'controller' => 'Universe\Controller\Universe',
                         'action'     => 'index',
                     ),
                 ),
@@ -42,20 +45,8 @@ return array(
         ),
         'factories' => array(
             'Universe\Controller\Index' => function($sm) {
-                $accept = $sm->getServiceLocator()
-                    ->get('application')
-                    ->getRequest()
-                    ->getHeader('accept');
-                ;
-                switch (true) {
-                    case (false !== $accept->match('text/html')):
-                        break;
-                    case (false !== $accept->match('application/json')):
-                        break;
-                }
-
                 $controller = new Universe\Controller\Index(
-                    $sm->getServiceLocator()->get('rest_crud_universe_mapper'),
+                    $sm->getServiceLocator()->get('universe_mapper'),
                     $sm->getServiceLocator()->get('rest_crud_universe_service')
                 );
                 return $controller;
@@ -75,7 +66,7 @@ return array(
                         break;
                 }
                 $controller = new $ctrlr(
-                    $sm->getServiceLocator()->get('rest_crud_universe_mapper'),
+                    $sm->getServiceLocator()->get('universe_mapper'),
                     $sm->getServiceLocator()->get('rest_crud_universe_service')
                 );
                 return $controller;
