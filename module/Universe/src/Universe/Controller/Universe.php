@@ -32,7 +32,7 @@ class Universe extends AbstractActionController
     public function indexAction()
     {
 
-        $universe = $this->mapper->findById(0);
+        $universe = $this->mapper->findById(1);
 
         return array(
             'table' => '<div class="map">' .
@@ -40,7 +40,7 @@ class Universe extends AbstractActionController
         );
     }
 
-    private function displayUniverse(Universe $universe)
+    private function displayUniverse(\Universe\Entity\Universe $universe)
     {
         $size = $universe->getSize();
         $output = '<table border="0" cellpadding="0" cellspacing="0" ' .
@@ -53,11 +53,11 @@ class Universe extends AbstractActionController
         return $output;
     }
 
-    private function displayEntity(DarkMatter $entity)
+    private function displayEntity(\Universe\Interfaces\DarkMatter $entity)
     {
         $str = '';
         $class = $this->getClass($entity);
-        if ($entity instanceof HasSubSpaces) {
+        if ($entity instanceof \Universe\Interfaces\HasSubSpaces) {
             $size = $entity->getSize();
             $subspaces = $entity->getSubSpaces();
             $nbPerRow = $entity->getSubSpacesPerRow();
@@ -89,7 +89,7 @@ class Universe extends AbstractActionController
         return $str;
     }
 
-    private function getClass(DarkMatter $entity)
+    private function getClass(\Universe\Interfaces\DarkMatter $entity)
     {
         $type = get_class($entity);
         $class = 'universe sector parsec artefact';

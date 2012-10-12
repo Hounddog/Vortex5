@@ -7,17 +7,24 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Universe\Controller;
+namespace Universe\Controller\Rest;
 
-use ZfcCrudJsonRest\Controller;
 use Zend\View\Model\ViewModel;
+use ZfcCrudJsonRest\Controller\RestfulController;
 
 class Universe extends RestfulController
 {
 
+    public function getList()
+    {
+        $this->createUniverse();
+    }
 
-
-
+    public function indexAction()
+    {
+        $universe = $this->createUniverse();
+        $this->getMapper()->create($universe);
+    }
 
     /**
      * @param int $size
@@ -53,7 +60,7 @@ class Universe extends RestfulController
         $parsecsTotal = $nbParsecs * $nbParsecs;
         $artefactsTotal = $nbArtefacts * $nbArtefacts;
 
-        $universe = new Universe();
+        $universe = new \Universe\Entity\Universe();
         $universe->setSize($size);
         $universe->setSubSpacesPerRow($nbSectors);
 
@@ -66,17 +73,17 @@ class Universe extends RestfulController
         // 2 % blue
 
         for ($i = 0; $i < $sectorsTotal; $i++) {
-            $sector = new Sector();
+            $sector = new \Universe\Entity\Sector();
             $sector->setSize($SectorSize);
             $sector->setSubSpacesPerRow($nbParsecs);
 
             for ($j = 0; $j < $parsecsTotal; $j++) {
-                $parsec = new Parsec();
+                $parsec = new \Universe\Entity\Parsec();
                 $parsec->setSize($ParsecSize);
                 $parsec->setSubSpacesPerRow($nbArtefacts);
 
                 for ($k = 0; $k < $artefactsTotal; $k++) {
-                    $artefact = new Artefact();
+                    $artefact = new \Universe\Entity\Artefact();
                     $artefact->setSize($ArtefactSize);
                     $rand = rand(0, 100) + 1;
                     switch (true) {

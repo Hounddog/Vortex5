@@ -14,8 +14,22 @@ return array(
                 'options' => array(
                     'route'    => '/universe',
                     'defaults' => array(
-                        'controller' => 'Universe\Controller\Universe',
+                        '__NAMESPACE__' => 'Universe\Controller',
+                        'controller' => 'Universe',
                         'action'     => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ),
+                        ),
                     ),
                 ),
             ),
