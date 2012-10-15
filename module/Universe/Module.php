@@ -51,18 +51,6 @@ class Module extends AbstractModule
     {
         return array (
             'factories' => array(
-                'controller_universe' => function($sm) {
-                    return new Controller\Universe(
-                        $sm->getServiceLocator()->get('universe_mapper'),
-                        $sm->getServiceLocator()->get('rest_crud_universe_service')
-                    );
-                },
-                'controller_universe_rest' => function($sm) {
-                    return new Controller\Rest\Universe(
-                        $sm->getServiceLocator()->get('universe_mapper'),
-                        $sm->getServiceLocator()->get('rest_crud_universe_service')
-                    );
-                },
                 'Universe\Controller\Index' => function($sm) {
                     $controller = new Controller\Index(
                         $sm->getServiceLocator()->get('universe_mapper'),
@@ -71,19 +59,10 @@ class Module extends AbstractModule
                     return $controller;
                 },
                 'Universe\Controller\Universe' => function($sm) {
-                    $accept = $sm->getServiceLocator()
-                        ->get('application')
-                        ->getRequest()
-                        ->getHeader('accept');
-                    ;
-                    switch (true) {
-                        case (false !== $accept->match('text/html')):
-                            $controller =  $sm->get('controller_universe');
-                            break;
-                        case (false !== $accept->match('application/json')):
-                            $controller = $sm->get('controller_universe_rest');
-                            break;
-                    }
+                    $controller = new Controller\Sector(
+                        $sm->getServiceLocator()->get('universe_mapper'),
+                        $sm->getServiceLocator()->get('rest_crud_universe_service')
+                    );
                     return $controller;
                 },
                 'Universe\Controller\Sector' => function($sm) {

@@ -45,14 +45,17 @@
 	background-image : url('../images/bg4.jpg');
 }
 
-.actionMenu {
+.gui {
 	border : 1px solid black;
-	display : inline-block;
-	width : 200px;
 	height: 800px;
+	display : inline-block;
+}
+
+.actionMenu {
+	width : 200px;
 	margin-left: 24px;
 }
 
 .map {
-	display : inline-block;	
+	width : 800px;
 }
