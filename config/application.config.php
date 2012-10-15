@@ -14,7 +14,7 @@ return array(
         'RestCrudDoctrineModule',
         'ZfcCrud',
         'ZfcCrudDoctrine',
-        'ZfcCrudJsonRest',
+        'ZfcCrudRest',
         'Util',
         'Universe',
         'ZendSkeletonModule',

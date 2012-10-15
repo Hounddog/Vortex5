@@ -13,3 +13,6 @@
 [submodule "module-dev/ZfcCrudJsonRest"]
 	path = module-dev/ZfcCrudJsonRest
 	url = https://github.com/Hounddog/ZfcCrudJsonRest.git
+[submodule "module-dev/ZfcCrudRest"]
+	path = module-dev/ZfcCrudRest
+	url = https://github.com/Hounddog/ZfcCrudRest.git

@@ -2,7 +2,7 @@
 
 namespace Kernel\Module;
 
-use ZfcCrudJsonRest\Module\AbstractModule as ZfcCrudAbstractModule;
+use ZfcCrudRest\Module\AbstractModule as ZfcCrudAbstractModule;
 
 abstract class AbstractModule extends ZfcCrudAbstractModule
 {
