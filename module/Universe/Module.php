@@ -59,7 +59,7 @@ class Module extends AbstractModule
                     return $controller;
                 },
                 'Universe\Controller\Universe' => function($sm) {
-                    $controller = new Controller\Sector(
+                    $controller = new Controller\Universe(
                         $sm->getServiceLocator()->get('universe_mapper'),
                         $sm->getServiceLocator()->get('rest_crud_universe_service')
                     );
