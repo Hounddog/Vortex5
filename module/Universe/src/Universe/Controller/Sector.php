@@ -9,10 +9,10 @@
 
 namespace Universe\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use ZfcCrudRest\Controller\RestfulController;
 use Zend\View\Model\ViewModel;
 
-class Sector extends AbstractActionController
+class Sector extends RestfulController
 {
 
     /**
@@ -29,10 +29,10 @@ class Sector extends AbstractActionController
         $this->service = $service;
     }
 
-    public function indexAction()
+    public function getList()
     {
         echo '<br/>request : <pre>' . print_r($this->getRequest(), true) . '</pre>';
-        $id = $this->getRequest()->getParam('id', null);
+        $id = $this->getRequest()->getQuery('id', null);
         echo '<br/>id : ' . $id;
 //        $sector = $this->mapper->findById(1);
 /*

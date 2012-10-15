@@ -16,6 +16,7 @@ use Zend\EventManager\EventInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 
+
 class Module extends AbstractModule
 {
     public function getDir()
@@ -38,7 +39,7 @@ class Module extends AbstractModule
                     return $mapper;
                 },
                 'rest_crud_universe_service' => function($sm) {
-                    return new \ZfcCrudJsonRest\Service\Restful(
+                    return new \ZfcCrudRest\Service\Restful(
                         $sm->get('universe_mapper')
                     );
                 },
