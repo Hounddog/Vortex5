@@ -16,6 +16,7 @@ use Zend\EventManager\EventInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 
+
 class Module extends AbstractModule
 {
     public function getDir()
@@ -28,12 +29,7 @@ class Module extends AbstractModule
         return __NAMESPACE__;
     }
 
-    public function getDoctrineConfig()
-    {
-        return array();
-    }
-
-    public function getServiceConfig() 
+    public function getServiceConfig()
     {
         return array(
             'factories' => array(
@@ -43,7 +39,7 @@ class Module extends AbstractModule
                     return $mapper;
                 },
                 'rest_crud_universe_service' => function($sm) {
-                    return new ZfcCrudJsonRest\Service\Restful(
+                    return new \ZfcCrudRest\Service\Restful(
                         $sm->get('universe_mapper')
                     );
                 },
@@ -51,7 +47,7 @@ class Module extends AbstractModule
         );
     }
 
-    public function getControllerConfig() 
+    public function getControllerConfig()
     {
         return array (
             'factories' => array(
@@ -91,7 +87,7 @@ class Module extends AbstractModule
                     return $controller;
                 },
                 'Universe\Controller\Sector' => function($sm) {
-                    $controller = new Controller\Index(
+                    $controller = new Controller\Sector(
                         $sm->getServiceLocator()->get('universe_mapper'),
                         $sm->getServiceLocator()->get('rest_crud_universe_service')
                     );

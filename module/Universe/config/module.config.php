@@ -10,12 +10,29 @@ return array(
     'router' => array(
         'routes' => array(
             'universe' => array(
-                'type' => 'Literal',
+                'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/universe',
                     'defaults' => array(
-                        'controller' => 'Universe\Controller\Universe',
-                        'action'     => 'index',
+                        '__NAMESPACE__' => 'Universe\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'action' => null,
+                            ),
+                        ),
                     ),
                 ),
             ),
