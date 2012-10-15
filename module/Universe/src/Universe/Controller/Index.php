@@ -17,13 +17,9 @@ class Index extends AbstractActionController
 
     public function indexAction()
     {
-/*
         return array(
-            'table' => '<div class="map">' .
-            $this->displayUniverse($universe) . '</div>' . $this->displayMenu()
+            'table' => '<div class="gui map"></div>' . $this->displayMenu()
         );
-
-        */
     }
 
     private function displayUniverse(Universe $universe)
@@ -97,7 +93,7 @@ class Index extends AbstractActionController
     {
         $str = '';
 
-        $str .= '<div class="actionMenu"></div>';
+        $str .= '<div class="gui actionMenu"></div>';
 
         return $str;
     }
